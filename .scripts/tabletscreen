@@ -1,0 +1,28 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+	echo "Bad syntax, tabletscreen {Monitor: int}"
+	exit
+fi
+
+pad=$(xinput list --id-only "pointer:HID 256c:006d Pad")
+pen=$(xinput list --id-only "pointer:HID 256c:006d Pen Pen (0)")
+#CC=$(xinput list --id-only "pointer:HV Huion Consumer Control")
+
+length=-1
+for monitor in $(xrandr | grep "^.* connected" | sed "s/ .*//")
+do
+    length=`expr $length + 1`
+    displays[ $length ]="$monitor"
+done
+
+if [ $1 -gt $length ]
+then
+    echo "Input '$1' is larger than number of monitors '$length'"
+    exit
+else
+    xinput map-to-output $pad ${displays[ $1 ]}
+    xinput map-to-output $pen ${displays[ $1 ]}
+#    xinput map-to-output $CC ${displays[ $1 ]}
+fi

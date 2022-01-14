@@ -17,7 +17,7 @@ fcitx -d &
 echo "LoadTheme $SCRIPTPATH/theme.toml" > $XDG_RUNTIME_DIR/leftwm/commands.pipe
 
 #set background
-feh --no-fehbg --bg-center '/home/pan/Pictures/bg2.png' '/home/pan/Pictures/bg1.png' &
+feh --no-fehbg --bg-center '/home/pan/Pictures/bg3.png' '/home/pan/Pictures/bg3.png' &
 
 #boot lemonbar and pipe the status of left into it
 sizes=( $(leftwm-state -q -n -t $SCRIPTPATH/sizes.liquid | sed -r '/^\s*$/d') )

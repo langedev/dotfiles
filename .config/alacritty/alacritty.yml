@@ -74,14 +74,6 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Background opacity
-#
-# Window opacity as a floating point number from `0.0` to `1.0`.
-# The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 1.0
-
-# Themes
-
 schemes:
   # Tokyo Night theme, based on both:
   #   https://github.com/ghifarit53/tokyonight-vim
@@ -152,24 +144,64 @@ schemes:
     # Normal colors
     normal:
       black:   '0x125170'
-      red:     '0xff8cb3'
-      green:   '0x8cffa7'
-      yellow:  '0xfff98c'
-      blue:    '0x8cc0ff'
-      magenta: '0xb88cff'
-      cyan:    '0x8cf7ff'
-      white:   '0xd1ccd0'
+      red:     '0xFFADAD'
+      green:   '0xCAFFBF'
+      yellow:  '0xFDFFB6'
+      blue:    '0xA0C4FF'
+      magenta: '0xBDB2FF'
+      cyan:    '0x9BF6FF'
+      white:   '0xFFFFFC'
 
     # Bright colors
     bright:
-      black:   '0x9f9b9e'
-      red:     '0xff8cb3'
-      green:   '0x8cffa7'
-      yellow:  '0xfff98c'
-      blue:    '0x8cc0ff'
-      magenta: '0xb88cff'
-      cyan:    '0x8cf7ff'
-      white:   '0xf6f0f4'
+      black:   '0x125170'
+      red:     '0xFFADAD'
+      green:   '0xCAFFBF'
+      yellow:  '0xFDFFB6'
+      blue:    '0xA0C4FF'
+      magenta: '0xBDB2FF'
+      cyan:    '0x9BF6FF'
+      white:   '0xFFFFFC'
+
+  catppuccin: &catppuccin
+    # Default colors
+    primary:
+      background: '0x1E1E28'
+      foreground: '0xD7DAE0'
+
+    # Colors the cursor will use if `custom_cursor_colors` is true
+    cursor:
+      text: '0x1E1E28'
+      cursor: '0xB3E1A3'
+
+    # Normal colors
+    normal:
+      black:   '0x6E6C7C'
+      red:     '0xE28C8C'
+      green:   '0xB3E1A3'
+      yellow:  '0xEADDA0'
+      blue:    '0xA4B9EF'
+      magenta: '0xC6AAE8'
+      cyan:    '0xF0AFE1'
+      white:   '0xD7DAE0'
+
+    # Bright colors
+    bright:
+      black:   '0x6E6C7C'
+      red:     '0xE28C8C'
+      green:   '0xB3E1A3'
+      yellow:  '0xEADDA0'
+      blue:    '0xA4B9EF'
+      magenta: '0xC6AAE8'
+      cyan:    '0xF0AFE1'
+      white:   '0xD7DAE0'
+
+    indexed_colors:
+      - { index: 16, color: '0xECBFBD' }
+      - { index: 17, color: '0x3E4058' }
+
+
 
 # Colors
-colors: *tokyo-night-storm
+colors: *catppuccin
+#colors: *pona

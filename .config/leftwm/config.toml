@@ -1,7 +1,7 @@
 modkey = "Mod4"
 mousekey = "Mod4"
 workspaces = []
-tags = ["home", "web", "chat", "dev", "med", "gfx", "etc"]
+tags = ["dev", "web", "chat", "note", "med", "etc"]
 layouts = ["MainAndVertStack", "CenterMain", "Monocle"]
 focus_behaviour = "Sloppy"
 focus_new_windows = true
@@ -16,21 +16,9 @@ key = "Return"
 
 [[keybind]]
 command = "Execute"
-value = "rofi -show run"
+value = "dmenu_run -n -p \"run\""
 modifier = ["modkey", "Shift"]
 key = "Return"
-
-[[keybind]]
-command = "Execute"
-value = "rofi -show calc"
-modifier = ["modkey", "Shift"]
-key = "plus"
-
-[[keybind]]
-command = "Execute"
-value = "bwmenu -c 30 --auto-lock -1"
-modifier = ["modkey"]
-key = "p"
 
 [[keybind]]
 command = "Execute"
@@ -75,24 +63,24 @@ key = "Tab"
 
 [[keybind]]
 command = "FocusWorkspaceNext"
-modifier = ["modkey", "Shift"]
+modifier = ["modkey"]
 key = "h"
 
 [[keybind]]
 command = "FocusWorkspacePrevious"
-modifier = ["modkey", "Shift"]
+modifier = ["modkey"]
 key = "l"
 
 [[keybind]]
 command = "IncreaseMainWidth"
 value = "3"
-modifier = ["modkey"]
+modifier = ["modkey", "Shift"]
 key = "l"
 
 [[keybind]]
 command = "DecreaseMainWidth"
 value = "3"
-modifier = ["modkey"]
+modifier = ["modkey", "Shift"]
 key = "h"
 
 [[keybind]]

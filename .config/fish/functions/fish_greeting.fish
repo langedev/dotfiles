@@ -1,4 +1,3 @@
 function fish_greeting
-	bunnyfetch
-	echo Hello, Lain
+	command tput clear
 end

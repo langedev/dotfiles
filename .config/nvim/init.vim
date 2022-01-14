@@ -14,10 +14,6 @@ nnoremap <C-H> <C-W><C-H>
 " Indentation
 set tabstop=2 softtabstop=0 shiftwidth=2 smarttab expandtab
 
-" Folding
-set foldenable
-set foldmethod=syntax
-
 " Searching
 set smartcase
 
@@ -55,15 +51,21 @@ Plug 'neoclide/coc.nvim' " Auto completion
 Plug 'mcchrish/nnn.vim' " nnn in vim
 Plug 'tpope/vim-commentary' " Comment out (multi-)lines
 Plug 'tpope/vim-fugitive' " Git Plugin
+Plug 'lervag/vimtex' " Latex support
+Plug 'tmhedberg/SimpylFold' " Good python folding
 
 " Look & Feel
-Plug 'ghifarit53/tokyonight-vim' " Color Scheme
+Plug 'catppuccin/nvim' " Color Scheme
 Plug 'bling/vim-airline' " Status Bar
 Plug 'sheerun/vim-polyglot' " Syntax Highlighting
 Plug 'luochen1990/rainbow' " Rainbow Paranthesis
 Plug 'ap/vim-css-color' " Preview colors
 
 call plug#end()
+
+" Colorscheme
+
+colorscheme catppuccin
 
 " nnn settings
 let g:nnn#layout = { 'window': { 'width': 0.35, 'height': 0.5, 'xoffset': 1.0, 'highlight': 'Debug' } } " hover window
@@ -74,17 +76,24 @@ let g:nnn#action = {
 let g:nnn#command = 'nnn -HeT v'
 let g:nnn#replace_netrw = 1
 
-" Color Theme
-set termguicolors " Set by terminal colors
-
-let g:tokyonight_style = 'storm' " night or storm
-let g:tokyonight_enable_italic = 1
-let g:airline_theme = "tokyonight"
-
-colorscheme tokyonight
-
 " Remove \"-- INSERT --\" indicator from statusbar
 set noshowmode
 
 " Rainbow Paranthesis
 let g:rainbow_actve = 1
+
+autocmd BufRead,BufNewFile *.md call WritingMode()
+autocmd BufRead,BufNewFile *.py call PythonMode()
+
+function! WritingMode()
+  setlocal textwidth=80
+  setlocal wrap linebreak nolist
+  setlocal whichwrap+=<,>,h,l
+  nnoremap j gj
+  nnoremap k gk
+  setlocal spell spelllang=en_us
+endfunction
+function! PythonMode()
+  setlocal foldmethod=indent
+  setlocal foldlevel=99
+endfunction

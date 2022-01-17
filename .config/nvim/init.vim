@@ -79,6 +79,9 @@ let g:nnn#replace_netrw = 1
 " Remove \"-- INSERT --\" indicator from statusbar
 set noshowmode
 
+" Toggle Color Highlights
+command! ColorToggle call css_color#toggle()
+
 " Rainbow Paranthesis
 let g:rainbow_actve = 1
 

@@ -1,0 +1,208 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+; Colorschemes:
+[catppuccin]
+rosewater = #F5E0DC
+flamingo  = #F2CDCD
+mauve     = #DDB6F2
+pink      = #F5C2E7
+maroon    = #E8A2AF
+red       = #F28FAD
+peach     = #F8BD96
+yellow    = #FAE3B0
+green     = #ABE9B3
+teal      = #B5E8E0
+blue      = #96CDFB
+sky       = #89DCEB
+lavendar  = #C9CBFF
+black0    = #131020
+black1    = #1A1823
+black2    = #1E1D2F
+black3    = #302D41
+black4    = #575268
+gray0     = #6E6C7E
+gray1     = #988BA2
+gray2     = #C3BAC6
+white     = #D9E0EE
+
+[colors]
+background      = ${catppuccin.black2}
+background-alt  = ${catppuccin.black1}
+foreground      = ${catppuccin.white}
+foreground-alt  = ${catppuccin.gray2}
+primary         = ${catppuccin.pink}
+secondary       = ${catppuccin.lavendar}
+red             = ${catppuccin.red}
+orange          = ${catppuccin.peach}
+yellow          = ${catppuccin.yellow}
+green           = ${catppuccin.green}
+teal            = ${catppuccin.teal}
+blue            = ${catppuccin.blue}
+purple          = ${catppuccin.mauve}
+
+[bar/dwm]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 24
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+font-0 = "Cascadia Codes:size=14;3"
+font-1 = "IPAPMincho:size=14;3"
+
+modules-left = dwm
+modules-right = battery pulseaudio date
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/dwm]
+type = internal/dwm
+format = <label-tags> <label-layout> <label-floating> <label-title>
+; Path to dwm socket (default: /tmp/dwm.sock)
+; socket-path = /tmp/dwm.sock
+
+; Left-click to view tag, right-click to toggle tag view
+enable-tags-click = true
+; Scroll to cycle between available tags
+enable-tags-scroll = false
+; If true and enable-tags-scroll = true, scrolling will view all tags regardless if occupied
+tags-scroll-empty = false
+; If true and enable-tags-scroll = true, scrolling will cycle through tags backwards
+tags-scroll-reverse = false
+; If true and enable-tags-scroll = true, wrap active tag when scrolling
+tags-scroll-wrap = false
+; Left-click to set secondary layout, right-click to switch to previous layout
+enable-layout-click = false
+; Scroll to cycle between available layouts
+enable-layout-scroll = false
+; Wrap when scrolling and reaching begining/end of layouts
+layout-scroll-wrap = false
+; Reverse scroll direction
+layout-scroll-reverse = false
+
+; If enable-layout-click = true, clicking the layout symbol will switch to this layout
+secondary-layout-symbol = [M]
+
+; Separator in between shown tags
+; label-separator = |
+
+; Title of currently focused window
+; Available tokens:
+;   %title%
+label-title = %title%
+label-title-padding = 2
+label-title-foreground = ${colors.foreground}
+label-title-maxlen = 30
+
+; Symbol of current layout
+; Available tokens:
+;   %symbol%
+label-layout = %symbol%
+label-layout-padding = 2
+label-layout-foreground = ${colors.foreground}
+label-layout-background = ${colors.background}
+
+; Text to show when currently focused window is floating
+label-floating = F
+
+; States: focused, unfocused, visible, urgent, empty
+; Available tokens:
+;   %name%
+
+; focused = Selected tag on focused monitor
+label-focused = %name%
+label-focused-background = ${colors.primary}
+label-focused-foreground = ${colors.background}
+label-focused-padding = 2
+
+; unfocused = Unselected tag on unselected monitor
+label-unfocused = %name%
+label-unfocused-background = ${colors.background}
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-padding = 2
+
+; visible = Unselected tag, but occupied tag on any monitor
+label-visible = %name%
+label-visible-background = ${colors.secondary}
+label-visible-foreground = ${colors.background}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Unselected tag with window that has urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.red}
+label-urgent-foreground = ${colors.background}
+label-urgent-padding = 2
+
+; empty = Unselected and unoccupied tag
+; This can be set to an empty string to hide empty tags
+label-empty = %name%
+label-empty-foreground = ${colors.foreground}
+label-empty-background = ${colors.background}
+label-empty-padding = 2
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "   %m月%d日"
+time = %H:%M
+label = %date% %time%
+
+label-foreground = ${colors.purple}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume>
+label-volume = "   %percentage%音"
+label-muted = "   防音"
+
+label-volume-foreground = ${colors.blue}
+label-muted-foreground = ${colors.teal}
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = ADP1
+full-at = 98
+
+label-charging = "   %percentage%送電"
+label-discharging = "   %percentage%停電"
+label-full = "   %percentage%電"
+
+label-charging-foreground = ${colors.yellow}
+label-discharging-foreground = ${colors.orange}
+label-full-foreground = ${colors.green}
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

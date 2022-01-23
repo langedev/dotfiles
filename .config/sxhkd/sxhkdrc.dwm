@@ -1,0 +1,29 @@
+super + Return
+	alacritty
+
+super + {_,shift +} {1-6}
+	dwm-msg run_command {view,tag} {1,2,4,8,16,32}
+
+super + {h,l}
+	dwm-msg run_command focusmon {-1,1}
+
+super + shift + {h,l}
+	dwm-msg run_command setmfact {-0.05, 0.05}
+
+super + {_,shift +} {j,k}
+	dwm-msg run_command {focusstack,movestack} {-1,1}
+
+super + shift + c
+	dwm-msg run_command killclient 0
+
+super + b
+	dwm-msg run_command togglebar
+
+super + f
+	dwm-msg run_command togglefloating
+
+super + {_,shift +} Tab
+	dwm-msg run_command cyclelayout {1,-1}
+
+super + shift + q
+	dwm-mg run_command quit

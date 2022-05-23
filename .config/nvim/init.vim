@@ -5,6 +5,8 @@ set nocompatible
 filetype plugin on
 set list
 
+set updatetime=300
+
 " Easy Split Navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -67,13 +69,18 @@ call plug#end()
 
 colorscheme catppuccin
 
-" nnn settings
+" n³ settings
 let g:nnn#layout = { 'window': { 'width': 0.35, 'height': 0.5, 'xoffset': 1.0, 'highlight': 'Debug' } } " hover window
-" let g:nnn#layout = 'vnew' " Verticle Split
+let g:nnn#explorer_layout = { 'left': '18%' }
+" Start NnnExplorer and put the cursor back in the other window.
+autocmd VimEnter * call nnn#explorer() | wincmd p | stopinsert
+" Exit Vim if NnnExplorer is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && &filetype ==# 'nnn' | quit! | endif
 let g:nnn#action = {
     \ '<c-t>': 'tab split',
+    \ '<c-s>': 'split',
     \ '<c-v>': 'vsplit' }
-let g:nnn#command = 'nnn -HeT v'
+let g:nnn#command = 'nnn -HoeT v'
 let g:nnn#replace_netrw = 1
 
 " Remove \"-- INSERT --\" indicator from statusbar
@@ -86,6 +93,9 @@ command! ColorToggle call css_color#toggle()
 let g:rainbow_actve = 1
 
 autocmd BufRead,BufNewFile *.md call WritingMode()
+autocmd BufRead,BufNewFile *.tex call WritingMode()
+autocmd BufRead,BufNewFile *.svx call WritingMode()
+
 autocmd BufRead,BufNewFile *.py call PythonMode()
 
 function! WritingMode()
@@ -99,4 +109,19 @@ endfunction
 function! PythonMode()
   setlocal foldmethod=indent
   setlocal foldlevel=99
+endfunction
+
+" Comment string support
+autocmd FileType svelte setlocal commentstring=<!--\ %s\ -->
+
+" Set tab for coc completion
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction

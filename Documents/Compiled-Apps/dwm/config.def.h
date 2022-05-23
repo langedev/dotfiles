@@ -26,11 +26,7 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"picom", NULL,
-	"fcitx", "-d", NULL,
-	"feh", "--no-fehbg", "--bg-center", "/home/pan/Pictures/bg.png", NULL,
-	"sxhkd", "-c", "/home/pan/.config/sxhkd/sxhkdrc.dwm", NULL,
-	"bluetoothctl", "power", "on", NULL,
+	"/home/pan/.config/dwm/startup.sh", NULL,
 	NULL /* terminate */
 };
 
@@ -77,7 +73,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-n", "-p", "run", NULL };
 //static const char *termcmd[]  = { "alacritty", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "alacritty", "-t", scratchpadname, "-o", "font.size=12", NULL };
+static const char *scratchpadcmd[] = { "alacritty", "-t", scratchpadname, "-o", "font.size=14", NULL };
 
 #include "movestack.c"
 static Key keys[] = {

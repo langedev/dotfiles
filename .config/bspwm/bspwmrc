@@ -1,0 +1,42 @@
+#!/bin/sh
+
+picom &
+dunst &
+fcitx -d &
+sxhkd -c '/home/pan/.config/sxhkd/sxhkdrc.bspwm' &
+~/.config/polybar/bspwm.sh &
+feh --no-fehbg --bg-center '/home/pan/Pictures/bg3.png' '/home/pan/Pictures/bg3.png' &
+
+# Setup up workspaces and monitors
+./bspwmDesktops.fish &
+
+# Workspace Settings
+
+bspc config split_ratio       0.75
+bspc config automatic_scheme  longest_side
+
+bspc config borderless_monocle  true
+bspc config gapless_monocle     true
+bspc config single_monocle      true
+
+bspc config focus_follows_pointer   true
+bspc config pointer_follows_monitor true
+
+# Styling
+
+bspc config border_width  2
+bspc config window_gap    3
+
+bspc config normal_border_color   "#1E1D2F"
+bspc config active_border_color   "#1E1D2F"
+bspc config focused_border_color  "#F5C2E7"
+
+# Window Rules
+
+bspc rule -a discord desktop="chat"
+bspc rule -a librewolf desktop="web"
+bspc rule -a obsidian desktop="note"
+bspc rule -a Steam desktop="game"
+bspc rule -a lutris desktop="game"
+bspc rule -a zoom desktop="zoom"
+bspc rule -a Spotify desktop="med"

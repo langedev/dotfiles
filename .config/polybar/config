@@ -56,6 +56,24 @@ teal            = ${catppuccin.teal}
 blue            = ${catppuccin.blue}
 purple          = ${catppuccin.mauve}
 
+[bar/bspwm]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 20
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+font-0 = "Cascadia Codes:size=12;2"
+font-1 = "IPAPMincho:size=12;2"
+
+modules-left = bspwm
+modules-right = pulseaudio date
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
 [bar/dwm]
 monitor = ${env:MONITOR:}
 width = 100%
@@ -68,11 +86,30 @@ foreground = ${colors.foreground}
 font-0 = "Cascadia Codes:size=12;2"
 font-1 = "IPAPMincho:size=12;2"
 
-modules-left = dwm
+modules-left = bspwm
 modules-right = pulseaudio date
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[module/bspwm]
+type = internal/bspwm
+index-sort = true
+enable-click = true
+format = <label-state>
+format-prefix-padding = 2
+#pin-workspaces = true
+label-empty-foreground = #4c566a
+label-focused-foreground = ${colors.bright}
+label-focused-background = ${colors.background-alt}
+label-focused = %name%
+label-focused-padding = 2
+label-occupied = %name%
+label-occupied-padding = 2
+label-occupied-foreground = ${colors.bright}
+label-empty = %name%
+label-empty-padding = 2
+
 
 [module/dwm]
 type = internal/dwm
@@ -202,7 +239,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+margin-bottom = 0
 
 ; vim:ft=dosini

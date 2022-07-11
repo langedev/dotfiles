@@ -1,0 +1,5 @@
+#!/bin/sh
+
+path=$(find $PROG_DIR -type f | fzf)
+
+nvim $path -c ":cd %:p:h"

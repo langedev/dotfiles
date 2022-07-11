@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+	echo "no"
+	exit
+fi
+
+file="$1"
+name=${file%.*} #remove file extension
+
+groff -e -p -t -ms "$file" -T pdf > "$name.pdf"
+
+zathura $name.pdf

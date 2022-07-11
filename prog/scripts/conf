@@ -1,0 +1,5 @@
+#!/bin/sh
+
+path=$(find $XDG_CONFIG_HOME -type f | fzf)
+
+nvim $path -c ":cd %:p:h"

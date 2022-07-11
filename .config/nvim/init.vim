@@ -27,6 +27,7 @@ set undofile
 
 " Right column at 80 lines for good coding practice.
 set colorcolumn=80
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " QoL
 set showmatch " Show matching Brackets
@@ -55,6 +56,8 @@ Plug 'tpope/vim-commentary' " Comment out (multi-)lines
 Plug 'tpope/vim-fugitive' " Git Plugin
 Plug 'lervag/vimtex' " Latex support
 Plug 'tmhedberg/SimpylFold' " Good python folding
+Plug 'jiangmiao/auto-pairs' " Insert/Delete brackets/parens/quotes in pairs
+Plug 'junegunn/fzf.vim' " Fuzzy searches
 
 " Look & Feel
 Plug 'catppuccin/nvim' " Color Scheme
@@ -71,17 +74,17 @@ colorscheme catppuccin
 
 " n³ settings
 let g:nnn#layout = { 'window': { 'width': 0.35, 'height': 0.5, 'xoffset': 1.0, 'highlight': 'Debug' } } " hover window
-let g:nnn#explorer_layout = { 'left': '18%' }
-" Start NnnExplorer and put the cursor back in the other window.
-autocmd VimEnter * call nnn#explorer() | wincmd p | stopinsert
-" Exit Vim if NnnExplorer is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && &filetype ==# 'nnn' | quit! | endif
 let g:nnn#action = {
     \ '<c-t>': 'tab split',
     \ '<c-s>': 'split',
     \ '<c-v>': 'vsplit' }
 let g:nnn#command = 'nnn -HoeT v'
 let g:nnn#replace_netrw = 1
+
+" fzf settings
+map <C-f> :Files<CR>
+map <C-a> :Ag<CR>
+
 
 " Remove \"-- INSERT --\" indicator from statusbar
 set noshowmode

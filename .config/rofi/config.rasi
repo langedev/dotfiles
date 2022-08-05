@@ -1,0 +1,15 @@
+configuration{
+    modi: "run,window,drun";
+    combi-modi: "run, drun";
+    terminal: "alacritty";
+    disable-history: false;
+    sort: true;
+    sidebar-mode: false;
+    auto-select: true;
+    monitor: "-1";
+    hide-scrollbar: true;
+    display-run: "Run";
+    display-window: "Window";
+}
+
+@theme "dmenu"

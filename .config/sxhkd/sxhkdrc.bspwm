@@ -1,0 +1,58 @@
+# == Reload Sxhkd == #
+
+# Restart sxhkd and reload config file
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# == Launch Programs == #
+
+# Terminal
+super + Return
+	alacritty
+
+# Program Launcher
+super + shift + Return
+	rofi -show run
+
+# Screenshot
+super + shift + p
+	screenshot
+
+# == BSPWM General == #
+
+# Restart or quit bspwm
+super + shift + {q,r}
+	bspc {quit, wm --restart}
+
+# == Node Management == #
+
+# close and kill
+super + {_,shift + }c
+	bspc node --{close,kill}
+
+# Toggles {tiled, psuedo tiled, floating, fullscreen
+super + {t,shift + t,f,shift + f}
+	bspc node --state ~{tiled,pseudo_tiled,floating,fullscreen}
+
+# Send node to given desktop
+super + shift + {1-9}
+	bspc node --to-desktop (desktopFromMonitor '{1-9}')
+
+# focus or swap the next or previous node
+super + {_,shift + }{n,m,comma,period}
+	bspc node --{focus,swap --follow} {west, south, north, east}
+
+# == Desktop Management == #
+
+# Change swap to desktop
+super + {1-9}
+	bspc desktop --focus (desktopFromMonitor '{1-9}')
+
+# Send desktop to neighbor monitor
+super + shift + {h,l}
+	bspc desktop --to-monitor {prev, next} --follow
+
+# == Monitor Management == #
+
+super + {h,l}
+	bspc monitor --focus {west, east}

@@ -1,0 +1,19 @@
+#!/bin/sh
+
+prompt="streamer:"
+
+twitch_list="Northernlion GothamChess Nyanners DeadBones5 Rawb skylerpreedy"
+yt_list="Destiny"
+
+cmd="$(echo $twitch_list $yt_list | sed 's/ /\n/g' | dmenu -i -p "$prompt")"
+[[ -z $cmd ]] && exit 1
+
+if [[ $cmd == "Destiny" ]]; then
+  mpv "https://youtube.com/Destiny/live" &
+  dgg &
+elif [[ $yt_list == *"$cmd"* ]]; then
+  mpv "https://youtube.com/$cmd/live" &
+else
+  mpv "https://www.twitch.tv/$cmd" &
+  chatterino -c "$cmd" &
+fi

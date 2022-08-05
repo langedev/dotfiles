@@ -5,6 +5,8 @@ set nocompatible
 filetype plugin on
 set list
 
+set updatetime=300
+
 " Easy Split Navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -25,6 +27,7 @@ set undofile
 
 " Right column at 80 lines for good coding practice.
 set colorcolumn=80
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " QoL
 set showmatch " Show matching Brackets
@@ -53,6 +56,9 @@ Plug 'tpope/vim-commentary' " Comment out (multi-)lines
 Plug 'tpope/vim-fugitive' " Git Plugin
 Plug 'lervag/vimtex' " Latex support
 Plug 'tmhedberg/SimpylFold' " Good python folding
+Plug 'jiangmiao/auto-pairs' " Insert/Delete brackets/parens/quotes in pairs
+Plug 'junegunn/fzf.vim' " Fuzzy searches
+Plug 'preservim/tagbar' " File tagging
 
 " Look & Feel
 Plug 'catppuccin/nvim' " Color Scheme
@@ -67,17 +73,22 @@ call plug#end()
 
 colorscheme catppuccin
 
-" nnn settings
+" n³ settings
 let g:nnn#layout = { 'window': { 'width': 0.35, 'height': 0.5, 'xoffset': 1.0, 'highlight': 'Debug' } } " hover window
-" let g:nnn#layout = 'vnew' " Verticle Split
 let g:nnn#action = {
     \ '<c-t>': 'tab split',
+    \ '<c-s>': 'split',
     \ '<c-v>': 'vsplit' }
-let g:nnn#command = 'nnn -HeT v'
+let g:nnn#command = 'nnn -HoeT v'
 let g:nnn#replace_netrw = 1
 
-" Remove \"-- INSERT --\" indicator from statusbar
-set noshowmode
+" fzf settings
+map <C-f> :Files<CR>
+map <C-a> :Ag<CR>
+
+
+" Airline Settings
+let g:airline#extensions#tagbar#flags = 'fs'
 
 " Toggle Color Highlights
 command! ColorToggle call css_color#toggle()
@@ -86,6 +97,9 @@ command! ColorToggle call css_color#toggle()
 let g:rainbow_actve = 1
 
 autocmd BufRead,BufNewFile *.md call WritingMode()
+autocmd BufRead,BufNewFile *.tex call WritingMode()
+autocmd BufRead,BufNewFile *.svx call WritingMode()
+
 autocmd BufRead,BufNewFile *.py call PythonMode()
 
 function! WritingMode()
@@ -99,4 +113,19 @@ endfunction
 function! PythonMode()
   setlocal foldmethod=indent
   setlocal foldlevel=99
+endfunction
+
+" Comment string support
+autocmd FileType svelte setlocal commentstring=<!--\ %s\ -->
+
+" Set tab for coc completion
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction

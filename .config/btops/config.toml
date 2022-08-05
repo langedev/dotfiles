@@ -1,0 +1,34 @@
+remove-empty = true
+append-when-occupied = true
+watch-config = true
+renamers = ["classified", "constant"]
+
+[names]
+constant = "✍️ SCR"
+
+[[names.classified]]
+"💬 CHT" = ["discord", "dgg-chat", "Signal", "Mumble"]
+
+[[names.classified]]
+"🌐 WEB" = ["librewolf"]
+
+[[names.classified]]
+"🗒️  NTE" = ["Zathura", "obsidian"]
+
+[[names.classified]]
+"🎲 GME" = ["Steam", "Lutris"]
+
+[[names.classified]]
+"💀 LOL" = ["leagueclientux.exe"]
+
+[[names.classified]]
+"⛏️  MC" = ["gdlauncher"]
+
+[[names.classified]]
+"📸 VID" = ["zoom"]
+
+[[names.classified]]
+"🎧 MUS" = ["Spotify"]
+
+[[names.classified]]
+"👀 VID" = ["mpv"]

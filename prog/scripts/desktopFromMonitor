@@ -1,0 +1,7 @@
+#!/bin/fish
+
+set desktops (bspc query -D -m)
+
+if test $argv[1] -gt 0
+  echo $desktops[$argv[1]]
+end

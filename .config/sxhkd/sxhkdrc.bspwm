@@ -12,7 +12,11 @@ super + Return
 
 # Program Launcher
 super + shift + Return
-	dmenu_run
+	rofi -show run
+
+# Screenshot
+super + shift + p
+	screenshot
 
 # == BSPWM General == #
 
@@ -24,7 +28,7 @@ super + shift + {q,r}
 
 # close and kill
 super + {_,shift + }c
-	bspc node --{close ,kill}
+	bspc node --{close,kill}
 
 # Toggles {tiled, psuedo tiled, floating, fullscreen
 super + {t,shift + t,f,shift + f}
@@ -32,21 +36,21 @@ super + {t,shift + t,f,shift + f}
 
 # Send node to given desktop
 super + shift + {1-9}
-	bspc node --to-desktop '^{1-9}'
-
-# Change ratio of selected node
-super + shift + {h,l}
-	bspc node --ratio {+0.05, -0.05}
+	bspc node --to-desktop (desktopFromMonitor '{1-9}')
 
 # focus or swap the next or previous node
-super + {_,shift + }{j,k}
-	bspc node --{focus,swap --follow} {prev, next}
+super + {_,shift + }{n,m,comma,period}
+	bspc node --{focus,swap --follow} {west, south, north, east}
 
 # == Desktop Management == #
 
 # Change swap to desktop
 super + {1-9}
-	bspc desktop --focus '^{1-9}'
+	bspc desktop --focus (desktopFromMonitor '{1-9}')
+
+# Send desktop to neighbor monitor
+super + shift + {h,l}
+	bspc desktop --to-monitor {prev, next} --follow
 
 # == Monitor Management == #
 

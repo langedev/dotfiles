@@ -58,6 +58,7 @@ Plug 'lervag/vimtex' " Latex support
 Plug 'tmhedberg/SimpylFold' " Good python folding
 Plug 'jiangmiao/auto-pairs' " Insert/Delete brackets/parens/quotes in pairs
 Plug 'junegunn/fzf.vim' " Fuzzy searches
+Plug 'preservim/tagbar' " File tagging
 
 " Look & Feel
 Plug 'catppuccin/nvim' " Color Scheme
@@ -86,8 +87,8 @@ map <C-f> :Files<CR>
 map <C-a> :Ag<CR>
 
 
-" Remove \"-- INSERT --\" indicator from statusbar
-set noshowmode
+" Airline Settings
+let g:airline#extensions#tagbar#flags = 'fs'
 
 " Toggle Color Highlights
 command! ColorToggle call css_color#toggle()

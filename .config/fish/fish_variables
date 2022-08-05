@@ -1,19 +1,25 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export BARTIB_FILE:/home/pan/\x2ecache/bartib/activities\x2ebartib
+SETUVAR --export BAT_THEME:Catppuccin
 SETUVAR CARGO_HOME:/home/pan/\x2econfig/cargo
 SETUVAR --export --path CUDA_CACHE_PATH:/home/pan/\x2ecache/nv
 SETUVAR --export DNVIM_HOME:/home/pan/\x2elocal/share/nvim/site/pack/discord\x2envim/start/discord\x2envim
+SETUVAR --export FZF_DEFAULT_OPTS:\x2d\x2dcolor\x3dbg\x2b\x3a\x23313244\x2cbg\x3a\x231e1e2e\x2cspinner\x3a\x23f5e0dc\x2chl\x3a\x23f38ba8\x20\x2d\x2dcolor\x3dfg\x3a\x23cdd6f4\x2cheader\x3a\x23f38ba8\x2cinfo\x3a\x23cba6f7\x2cpointer\x3a\x23f5e0dc\x20\x2d\x2dcolor\x3dmarker\x3a\x23f5e0dc\x2cfg\x2b\x3a\x23cdd6f4\x2cprompt\x3a\x23cba6f7\x2chl\x2b\x3a\x23f38ba8
 SETUVAR --export --path GOPATH:/home/pan/\x2ecache/go
 SETUVAR --export GTK_IM_MODULE:fcitx
 SETUVAR --export MANPAGER:sh\x20\x2dc\x20\x27col\x20\x2dbx\x20\x7c\x20bat\x20\x2dl\x20man\x20\x2dp\x27
+SETUVAR --export NNN_COLORS:\x2304020301\x3b4231
+SETUVAR --export NNN_FCOLORS:0000E6310000000000000000
 SETUVAR --export NNN_TRASH:1
+SETUVAR --export PROG_DIR:/home/pan/prog/projects/
 SETUVAR --export PYTHONSTARTUP:/home/pan/\x2econfig/python/pythonrc
 SETUVAR --export QT_IM_MODULE:fcitx
 SETUVAR --export SDL_IM_MODULE:fcitx
 SETUVAR --export SSB_HOME:/home/pan/\x2elocal/share/zoom
 SETUVAR --export STACK_ROOT:/home/pan/\x2elocal/share/stack
 SETUVAR --export VISUAL:nvim
+SETUVAR --export WINEPREFIX:/home/pan/\x2elocal/share/wineprefixes/default
 SETUVAR --export XDG_CACHE_HOME:/home/pan/\x2ecache
 SETUVAR --export XDG_CONFIG_HOME:/home/pan/\x2econfig
 SETUVAR --export XDG_DATA_HOME:/home/pan/\x2elocal/share

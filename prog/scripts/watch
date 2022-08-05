@@ -1,0 +1,17 @@
+#!/bin/fish
+
+set data (watchingSelect)
+
+set anime (echo $data | awk '{print $1}' FS="|" | string trim -r)
+
+set episode (math (echo $data | awk '{print $2}' FS="|" | awk '{print $1}' FS="/") + 1)
+
+mal s $anime >> /dev/null
+
+animdl stream -r $episode $anime
+
+if test $status -eq 0
+  mal e
+else
+  mal curr
+end

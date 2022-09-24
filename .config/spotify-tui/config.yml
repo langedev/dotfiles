@@ -13,3 +13,7 @@ theme:
   hovered: "245, 189, 230" # hovered pane border Pink
   selected: "183, 189, 248" # a) selected pane border, b) hovered item in list, & c) track title in player Lavender
   header: "183, 189, 248" # header text in panes (e.g. 'Title', 'Artist', etc.) Lavender
+
+behavior:
+  # The lower the number the higher the "frames per second". You can decrease this number so that the audio visualisation is smoother but this can be expensive!
+  tick_rate_milliseconds: 35

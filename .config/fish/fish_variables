@@ -1,5 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export AWS_CONFIG_FILE:/home/pan/\x2econfig/aws/config
+SETUVAR --export AWS_SHARED_CREDENTIALS_FILE:/home/pan/\x2econfig/aws/credentials
 SETUVAR --export BARTIB_FILE:/home/pan/\x2ecache/bartib/activities\x2ebartib
 SETUVAR --export BAT_THEME:Catppuccin
 SETUVAR CARGO_HOME:/home/pan/\x2econfig/cargo
@@ -15,6 +17,7 @@ SETUVAR --export NNN_TRASH:1
 SETUVAR --export PROG_DIR:/home/pan/prog/projects/
 SETUVAR --export PYTHONSTARTUP:/home/pan/\x2econfig/python/pythonrc
 SETUVAR --export QT_IM_MODULE:fcitx
+SETUVAR --export SCRIPTS_DIR:/home/pan/prog/scripts/
 SETUVAR --export SDL_IM_MODULE:fcitx
 SETUVAR --export SSB_HOME:/home/pan/\x2elocal/share/zoom
 SETUVAR --export STACK_ROOT:/home/pan/\x2elocal/share/stack

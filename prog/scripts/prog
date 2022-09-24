@@ -1,5 +1,9 @@
-#!/bin/sh
+#!/bin/fish
 
-path=$(find $PROG_DIR -type f | fzf)
+set path (ls -d $PROG_DIR/* $SCRIPTS_DIR/* | fzf --tiebreak end)
 
-nvim $path -c ":cd %:p:h"
+if test -d $path
+  nnn $path
+else
+  nvim $path -c ":cd %:p:h"
+end
